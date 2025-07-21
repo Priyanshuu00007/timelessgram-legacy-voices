@@ -1,11 +1,32 @@
 import { Button } from "@/components/ui/button";
+import { ShootingStars } from "@/components/ui/shooting-stars";
 import heroImage from "@/assets/hero-cassette.jpg";
 import { Heart, Play } from "lucide-react";
 
 export const HeroSection = () => {
   return (
-    <section className="min-h-screen flex items-center bg-gradient-sepia">
-      <div className="container mx-auto px-6 lg:px-8">
+    <section className="relative min-h-screen flex items-center bg-gradient-sepia overflow-hidden">
+      {/* Shooting Stars Background */}
+      <ShootingStars
+        starColor="hsl(15, 65%, 60%)"
+        trailColor="hsl(35, 35%, 75%)"
+        minSpeed={8}
+        maxSpeed={20}
+        minDelay={2000}
+        maxDelay={6000}
+        className="opacity-30"
+      />
+      <ShootingStars
+        starColor="hsl(25, 60%, 70%)"
+        trailColor="hsl(42, 25%, 85%)"
+        minSpeed={5}
+        maxSpeed={15}
+        minDelay={3000}
+        maxDelay={8000}
+        className="opacity-20"
+      />
+      
+      <div className="container mx-auto px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Text Content */}
           <div className="text-center lg:text-left">

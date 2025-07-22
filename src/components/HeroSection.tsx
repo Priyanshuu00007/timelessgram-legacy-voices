@@ -4,7 +4,7 @@ import { Heart, Play } from "lucide-react";
 
 export const HeroSection = () => {
   return (
-    <section className="min-h-screen flex items-center bg-gradient-sepia">
+    <section className="min-h-screen flex items-center bg-gradient-sepia pt-20">
       <div className="container mx-auto px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Text Content */}

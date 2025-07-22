@@ -2,76 +2,69 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Timelessgram Design System - Warm, nostalgic, emotional palette */
+/* Timelessgram Design System - Deep emotional connection palette */
 
 @layer base {
   :root {
-    /* Warm background tones */
-    --background: 38 15% 96%;
-    --foreground: 25 30% 15%;
+    /* Soft cream background - comfort and warmth */
+    --background: 45 25% 97%;
+    --foreground: 345 25% 15%;
 
-    /* Card and surface colors with warm undertones */
-    --card: 42 25% 98%;
-    --card-foreground: 25 30% 15%;
+    /* Card surfaces with subtle warmth */
+    --card: 45 30% 98%;
+    --card-foreground: 345 25% 15%;
 
-    --popover: 42 25% 98%;
-    --popover-foreground: 25 30% 15%;
+    --popover: 45 30% 98%;
+    --popover-foreground: 345 25% 15%;
 
-    /* Primary - deep warm brown */
-    --primary: 25 30% 15%;
-    --primary-foreground: 42 25% 98%;
+    /* Primary - deep burgundy wine (emotional depth, lasting love) */
+    --primary: 345 45% 25%;
+    --primary-foreground: 45 30% 98%;
 
-    /* Secondary - soft warm beige */
-    --secondary: 38 20% 90%;
-    --secondary-foreground: 25 30% 15%;
+    /* Secondary - champagne gold (precious memories, timeless) */
+    --secondary: 45 45% 85%;
+    --secondary-foreground: 345 25% 15%;
 
-    /* Muted tones */
-    --muted: 38 15% 88%;
-    --muted-foreground: 25 20% 40%;
+    /* Muted - warm taupe (sophisticated calm) */
+    --muted: 35 20% 88%;
+    --muted-foreground: 345 20% 45%;
 
-    /* Accent - warm golden tone */
-    --accent: 35 35% 75%;
-    --accent-foreground: 25 30% 15%;
+    /* Accent - rose gold (love, tenderness) */
+    --accent: 15 40% 75%;
+    --accent-foreground: 345 25% 15%;
 
-    /* Emotional accent colors */
-    --emotional: 15 65% 60%;
-    --emotional-foreground: 42 25% 98%;
+    /* Emotional - deep coral rose (warmth, connection, final words) */
+    --emotional: 355 60% 55%;
+    --emotional-foreground: 45 30% 98%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 42 25% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 45 30% 98%;
 
-    /* Subtle borders */
-    --border: 38 15% 85%;
-    --input: 38 15% 88%;
-    --ring: 35 35% 75%;
+    /* Subtle warm borders */
+    --border: 35 20% 85%;
+    --input: 35 20% 88%;
+    --ring: 15 40% 75%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
-    /* Beautiful gradients for emotional storytelling */
-    --gradient-sunset: linear-gradient(135deg, hsl(25, 60%, 75%) 0%, hsl(15, 65%, 60%) 50%, hsl(5, 70%, 50%) 100%);
-    --gradient-sepia: linear-gradient(180deg, hsl(42, 25%, 98%) 0%, hsl(38, 20%, 92%) 100%);
-    --gradient-warm: linear-gradient(45deg, hsl(35, 35%, 85%) 0%, hsl(25, 30%, 80%) 100%);
-    --gradient-emotional: linear-gradient(135deg, hsl(15, 65%, 60%) 0%, hsl(35, 60%, 70%) 100%);
+    /* Emotionally rich gradients */
+    --gradient-sunset: linear-gradient(135deg, hsl(15, 60%, 70%) 0%, hsl(355, 60%, 55%) 50%, hsl(345, 45%, 40%) 100%);
+    --gradient-sepia: linear-gradient(180deg, hsl(45, 30%, 98%) 0%, hsl(45, 25%, 94%) 100%);
+    --gradient-warm: linear-gradient(45deg, hsl(45, 45%, 88%) 0%, hsl(35, 35%, 82%) 100%);
+    --gradient-emotional: linear-gradient(135deg, hsl(355, 60%, 55%) 0%, hsl(15, 50%, 65%) 100%);
 
-    /* Shadows with warmth */
-    --shadow-warm: 0 4px 20px hsla(25, 30%, 15%, 0.08);
-    --shadow-emotional: 0 8px 32px hsla(15, 65%, 60%, 0.15);
+    /* Deeper emotional shadows */
+    --shadow-warm: 0 6px 25px hsla(345, 25%, 15%, 0.12);
+    --shadow-emotional: 0 12px 40px hsla(355, 60%, 55%, 0.20);
 
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 45 25% 97%;
+    --sidebar-foreground: 345 25% 15%;
+    --sidebar-primary: 345 45% 25%;
+    --sidebar-primary-foreground: 45 30% 98%;
+    --sidebar-accent: 45 45% 90%;
+    --sidebar-accent-foreground: 345 25% 15%;
+    --sidebar-border: 35 20% 85%;
+    --sidebar-ring: 15 40% 75%;
   }
 
   .dark {

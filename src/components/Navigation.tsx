@@ -12,17 +12,16 @@ export const Navigation = () => {
 
   return (
     <>
-      {/* Logo - Always visible on all devices */}
-      <div className="absolute top-4 left-4 sm:left-6 z-50 flex items-center gap-2">
-        <Heart className="w-5 h-5 sm:w-6 sm:h-6 text-emotional" />
-        <span className="font-serif text-lg sm:text-xl font-bold text-foreground">Timelessgram</span>
-      </div>
-      
-      {/* Tubelight Navigation */}
+      {/* Fixed Navigation Bar at top */}
       <NavBar items={navItems} />
       
-      {/* CTA Button - Responsive positioning */}
-      <div className="absolute top-4 right-4 sm:right-6 z-50">
+      {/* Header with Logo and CTA - below navigation */}
+      <div className="flex justify-between items-center px-4 sm:px-6 py-4 mt-16 mb-4">
+        <div className="flex items-center gap-2">
+          <Heart className="w-5 h-5 sm:w-6 sm:h-6 text-emotional" />
+          <span className="font-serif text-lg sm:text-xl font-bold text-foreground">Timelessgram</span>
+        </div>
+        
         <a 
           href="/record" 
           className="bg-emotional hover:bg-emotional/90 text-white px-4 sm:px-6 py-2 rounded-full font-medium transition-colors text-sm sm:text-base"

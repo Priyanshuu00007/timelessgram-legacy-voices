@@ -22,9 +22,9 @@ export const CTASection = () => {
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="hero" size="lg" className="bg-white text-emotional hover:bg-white/90 text-xl" asChild>
-              <a href="/record">
+              <a href="/create-legacy">
                 <Heart className="w-5 h-5" />
-                Start Your Legacy
+                Create Legacy
               </a>
             </Button>
             

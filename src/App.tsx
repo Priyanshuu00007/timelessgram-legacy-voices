@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import Record from "./pages/Record";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
+import CreateLegacy from "./pages/CreateLegacy";
 
 const queryClient = new QueryClient();
 
@@ -20,6 +21,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/record" element={<Record />} />
           <Route path="/about" element={<About />} />
+          <Route path="/create-legacy" element={<CreateLegacy />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

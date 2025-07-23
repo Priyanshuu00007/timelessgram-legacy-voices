@@ -390,9 +390,9 @@ const LifeCapsuleDashboard: React.FC<{ user: any }> = ({ user }) => {
         </motion.div>
       </div>
       {/* Main Layout */}
-      <div className="relative z-10 flex flex-row max-w-6xl mx-auto gap-8 px-2 pb-16">
+      <div className="relative z-10 flex flex-col md:flex-row max-w-xs sm:max-w-3xl md:max-w-6xl mx-auto gap-4 md:gap-8 px-1 sm:px-2 pb-16">
         {/* Sidebar */}
-        <aside className="sticky top-8 h-fit min-w-[260px] max-w-[320px] bg-white/70 backdrop-blur-lg shadow-xl rounded-3xl flex flex-col gap-6 p-6 border border-pink-100 animate-fade-in-slow">
+        <aside className="relative md:sticky top-8 h-fit w-full md:min-w-[260px] md:max-w-[320px] bg-white/70 backdrop-blur-lg shadow-xl rounded-3xl flex flex-col gap-4 sm:gap-6 p-3 sm:p-6 border border-pink-100 animate-fade-in-slow mb-4 md:mb-0">
           <div className="mb-2">
             <span className="font-serif text-lg text-emotional">Filters</span>
           </div>
@@ -402,9 +402,9 @@ const LifeCapsuleDashboard: React.FC<{ user: any }> = ({ user }) => {
           </div>
           <div>
             <Label className="block mb-2 text-emotional">Emotion</Label>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-nowrap gap-1 sm:gap-2 overflow-x-auto scrollbar-thin w-full">
               {EMOTIONS.map(e => (
-                <Button key={e.label} variant={emotion === e.label ? 'emotional' : 'outline'} size="sm" className="rounded-full px-3" onClick={() => setEmotion(emotion === e.label ? '' : e.label)}>
+                <Button key={e.label} variant={emotion === e.label ? 'emotional' : 'outline'} size="sm" className="rounded-full px-2 sm:px-3 whitespace-nowrap" onClick={() => setEmotion(emotion === e.label ? '' : e.label)}>
                   <span className="mr-1">{e.emoji}</span> {e.label}
                 </Button>
               ))}
@@ -412,12 +412,12 @@ const LifeCapsuleDashboard: React.FC<{ user: any }> = ({ user }) => {
           </div>
           <div>
             <Label className="block mb-2 text-emotional">Media</Label>
-            <div className="flex gap-2">
-              <Button variant={mediaType === '' ? 'emotional' : 'outline'} size="sm" className="rounded-full px-3" onClick={() => setMediaType('')}>All</Button>
-              <Button variant={mediaType === 'text' ? 'emotional' : 'outline'} size="sm" className="rounded-full px-3" onClick={() => setMediaType('text')}><Smile className="w-4 h-4 mr-1" />Text</Button>
-              <Button variant={mediaType === 'image' ? 'emotional' : 'outline'} size="sm" className="rounded-full px-3" onClick={() => setMediaType('image')}><Image className="w-4 h-4 mr-1" />Image</Button>
-              <Button variant={mediaType === 'video' ? 'emotional' : 'outline'} size="sm" className="rounded-full px-3" onClick={() => setMediaType('video')}><Video className="w-4 h-4 mr-1" />Video</Button>
-              <Button variant={mediaType === 'audio' ? 'emotional' : 'outline'} size="sm" className="rounded-full px-3" onClick={() => setMediaType('audio')}><Mic className="w-4 h-4 mr-1" />Audio</Button>
+            <div className="flex flex-nowrap gap-1 sm:gap-2 overflow-x-auto scrollbar-thin w-full">
+              <Button variant={mediaType === '' ? 'emotional' : 'outline'} size="sm" className="rounded-full px-2 sm:px-3 whitespace-nowrap" onClick={() => setMediaType('')}>All</Button>
+              <Button variant={mediaType === 'text' ? 'emotional' : 'outline'} size="sm" className="rounded-full px-2 sm:px-3 whitespace-nowrap" onClick={() => setMediaType('text')}><Smile className="w-4 h-4 mr-1" />Text</Button>
+              <Button variant={mediaType === 'image' ? 'emotional' : 'outline'} size="sm" className="rounded-full px-2 sm:px-3 whitespace-nowrap" onClick={() => setMediaType('image')}><Image className="w-4 h-4 mr-1" />Image</Button>
+              <Button variant={mediaType === 'video' ? 'emotional' : 'outline'} size="sm" className="rounded-full px-2 sm:px-3 whitespace-nowrap" onClick={() => setMediaType('video')}><Video className="w-4 h-4 mr-1" />Video</Button>
+              <Button variant={mediaType === 'audio' ? 'emotional' : 'outline'} size="sm" className="rounded-full px-2 sm:px-3 whitespace-nowrap" onClick={() => setMediaType('audio')}><Mic className="w-4 h-4 mr-1" />Audio</Button>
             </div>
           </div>
           <div>
@@ -427,53 +427,53 @@ const LifeCapsuleDashboard: React.FC<{ user: any }> = ({ user }) => {
           </div>
           <div>
             <Label className="block mb-2 text-emotional">Theme</Label>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-nowrap gap-1 sm:gap-2 overflow-x-auto scrollbar-thin w-full">
               {['Family','Growth','Pain','Achievement','Travel','Love','Regret'].map(theme => (
-                <Button key={theme} variant="outline" size="sm" className="rounded-full px-3 opacity-80">{theme}</Button>
+                <Button key={theme} variant="outline" size="sm" className="rounded-full px-2 sm:px-3 opacity-80 whitespace-nowrap">{theme}</Button>
               ))}
             </div>
           </div>
         </aside>
         {/* Timeline Main Content */}
-        <main className="flex-1 flex flex-col gap-8 pt-2 animate-fade-in-slow">
+        <main className="flex-1 flex flex-col gap-4 sm:gap-8 pt-2 animate-fade-in-slow w-full">
           {/* Floating Add Button */}
-          <Link to="/life-capsule/add" className="fixed bottom-8 right-8 z-50">
-            <Button variant="hero" size="lg" className="rounded-full shadow-2xl px-6 py-4 text-xl flex items-center gap-2 animate-fade-in-slow">
-              <Plus className="w-6 h-6" /> Add New Memory
+          <Link to="/life-capsule/add" className="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 z-50">
+            <Button variant="hero" size="lg" className="rounded-full shadow-2xl px-4 sm:px-6 py-3 sm:py-4 text-base sm:text-xl flex items-center gap-2 animate-fade-in-slow">
+              <Plus className="w-6 h-6" /> <span className="hidden xs:inline">Add New Memory</span>
             </Button>
           </Link>
           {/* Timeline */}
-          <div className="relative flex flex-col gap-8 mt-2">
-            <div className="absolute left-6 top-0 bottom-0 w-1 bg-gradient-to-b from-pink-200 via-blue-200 to-purple-200 rounded-full opacity-60" style={{ zIndex: 0 }} />
+          <div className="relative flex flex-col gap-4 sm:gap-8 mt-2">
+            <div className="absolute left-3 sm:left-6 top-0 bottom-0 w-1 bg-gradient-to-b from-pink-200 via-blue-200 to-purple-200 rounded-full opacity-60" style={{ zIndex: 0 }} />
             {filtered.length === 0 && (
-              <div className="text-center text-muted-foreground text-lg mt-16">No memories found. Try adjusting your filters or create a new entry.</div>
+              <div className="text-center text-muted-foreground text-base sm:text-lg mt-8 sm:mt-16">No memories found. Try adjusting your filters or create a new entry.</div>
             )}
             {filtered.map((entry, idx) => (
               <motion.div
                 key={entry.id}
-                className="relative flex gap-6 items-start group animate-fade-in"
+                className="relative flex flex-col sm:flex-row gap-2 sm:gap-6 items-start group animate-fade-in"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: idx * 0.1, duration: 0.7 }}
               >
                 {/* Timeline dot */}
-                <div className="flex flex-col items-center z-10">
+                <div className="flex flex-row sm:flex-col items-center z-10">
                   <span className="w-6 h-6 rounded-full bg-white border-4 border-pink-200 flex items-center justify-center text-2xl shadow-emotional">{entry.emotion}</span>
-                  {idx !== filtered.length - 1 && <div className="w-1 flex-1 bg-gradient-to-b from-pink-200 via-blue-200 to-purple-200 opacity-60" />}
+                  {idx !== filtered.length - 1 && <div className="hidden sm:block w-1 flex-1 bg-gradient-to-b from-pink-200 via-blue-200 to-purple-200 opacity-60" />}
                 </div>
                 {/* Diary Page */}
-                <div className="flex-1 bg-white/90 rounded-2xl shadow-lg border border-pink-100 p-6 relative hover:scale-[1.01] transition-transform cursor-pointer" onClick={() => setExpanded(entry)}>
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="font-serif text-xl font-bold text-foreground group-hover:text-emotional transition-colors">{entry.title}</span>
-                    <span className="ml-2 px-2 py-0.5 rounded-full bg-emotional/10 text-emotional text-xs font-semibold">{entry.mood}</span>
-                    <span className="ml-auto text-xs text-muted-foreground">{entry.date}</span>
+                <div className="flex-1 bg-white/90 rounded-2xl shadow-lg border border-pink-100 p-3 sm:p-6 relative hover:scale-[1.01] transition-transform cursor-pointer w-full min-w-0" onClick={() => setExpanded(entry)}>
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-1 sm:gap-2 mb-2 w-full">
+                    <span className="font-serif text-base sm:text-xl font-bold text-foreground group-hover:text-emotional transition-colors break-words">{entry.title}</span>
+                    <span className="px-2 py-0.5 rounded-full bg-emotional/10 text-emotional text-xs font-semibold whitespace-nowrap">{entry.mood}</span>
+                    <span className="ml-auto text-xs text-muted-foreground whitespace-nowrap">{entry.date}</span>
                   </div>
                   {/* Media carousel preview */}
-                  <div className="flex gap-2 mb-2">
-                    {entry.media.map((m, i) => m.type === 'image' ? <img key={i} src={m.url} alt="" className="w-16 h-16 object-cover rounded-lg border" /> : m.type === 'audio' ? <Mic className="w-8 h-8 text-purple-400" key={i} /> : m.type === 'video' ? <Video className="w-8 h-8 text-blue-400" key={i} /> : null)}
+                  <div className="flex gap-1 sm:gap-2 mb-2 flex-wrap">
+                    {entry.media.map((m, i) => m.type === 'image' ? <img key={i} src={m.url} alt="" className="w-12 h-12 sm:w-16 sm:h-16 object-cover rounded-lg border" /> : m.type === 'audio' ? <Mic className="w-6 h-6 sm:w-8 sm:h-8 text-purple-400" key={i} /> : m.type === 'video' ? <Video className="w-6 h-6 sm:w-8 sm:h-8 text-blue-400" key={i} /> : null)}
                   </div>
-                  <div className="text-base text-muted-foreground line-clamp-3" style={{ fontFamily: 'Poppins, Inter, serif' }}>{entry.text.length > 120 ? entry.text.slice(0, 120) + '…' : entry.text}</div>
-                  <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div className="text-xs sm:text-base text-muted-foreground line-clamp-3 break-words" style={{ fontFamily: 'Poppins, Inter, serif' }}>{entry.text.length > 120 ? entry.text.slice(0, 120) + '…' : entry.text}</div>
+                  <div className="absolute top-2 right-2 sm:top-4 sm:right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                     <Button variant="outline" size="icon" className="rounded-full"><Edit className="w-4 h-4" /></Button>
                     <Button variant="destructive" size="icon" className="rounded-full"><Trash2 className="w-4 h-4" /></Button>
                   </div>

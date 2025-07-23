@@ -184,16 +184,16 @@ const AddMemory: React.FC = () => {
     >
       <AnimatedPetals />
       {/* Theme Selector */}
-      <div className="fixed top-4 right-2 z-20 flex gap-1 bg-white/40 backdrop-blur rounded-full shadow px-2 py-1 sm:top-6 sm:right-8 sm:gap-2 sm:px-4 sm:py-2">
-        <span className="text-xs sm:text-sm text-muted-foreground">Theme:</span>
+      <div className="fixed top-4 right-2 z-20 flex gap-1 bg-white/40 backdrop-blur rounded-full shadow px-2 py-1 sm:top-6 sm:right-8 sm:gap-2 sm:px-4 sm:py-2 overflow-x-auto max-w-full scrollbar-thin">
+        <span className="text-xs sm:text-sm text-muted-foreground whitespace-nowrap">Theme:</span>
         {THEMES.map(t => (
-          <Button key={t.name} variant={theme.name === t.name ? 'emotional' : 'outline'} size="sm" className="rounded-full px-2 sm:px-3 text-xs sm:text-sm" onClick={() => setTheme(t)}>{t.name}</Button>
+          <Button key={t.name} variant={theme.name === t.name ? 'emotional' : 'outline'} size="sm" className="rounded-full px-2 sm:px-3 text-xs sm:text-sm whitespace-nowrap" onClick={() => setTheme(t)}>{t.name}</Button>
         ))}
       </div>
       {/* Welcome & Placeholder for Journal UI */}
-      <div className="relative z-10 w-full max-w-2xl mx-auto flex flex-col items-center justify-center pt-20 pb-8 px-2 sm:pt-24 sm:pb-12 sm:px-4 animate-fade-in">
+      <div className="relative z-10 w-full max-w-xs sm:max-w-2xl mx-auto flex flex-col items-center justify-center pt-20 pb-8 px-2 sm:pt-24 sm:pb-12 sm:px-4 animate-fade-in">
         <motion.h1
-          className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 text-emotional drop-shadow-lg text-center"
+          className="text-xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 text-emotional drop-shadow-lg text-center break-words"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
@@ -201,7 +201,7 @@ const AddMemory: React.FC = () => {
           Write a New Memory
         </motion.h1>
         <motion.p
-          className="text-base sm:text-lg md:text-xl text-muted-foreground mb-4 sm:mb-8 font-light text-center"
+          className="text-sm sm:text-lg md:text-xl text-muted-foreground mb-4 sm:mb-8 font-light text-center break-words"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 1 }}
@@ -232,13 +232,13 @@ const AddMemory: React.FC = () => {
           )}
           {/* Animated Multi-Select Emotion Picker */}
           <div className="w-full flex flex-col items-center mb-3 sm:mb-4">
-            <div className="flex flex-wrap gap-1 sm:gap-2 justify-center mb-2">
+            <div className="flex flex-nowrap gap-1 sm:gap-2 justify-center mb-2 overflow-x-auto w-full scrollbar-thin px-1">
               {EMOTION_OPTIONS.map(opt => (
                 <motion.button
                   key={opt.emoji}
                   type="button"
                   onClick={() => toggleEmotion(opt)}
-                  className={`rounded-full px-3 sm:px-4 py-2 text-lg sm:text-xl font-semibold shadow transition-all duration-200 border-2 focus:outline-none focus:ring-2 focus:ring-emotional/50 ${emotions.some(e => e.emoji === opt.emoji)
+                  className={`rounded-full px-3 sm:px-4 py-2 text-lg sm:text-xl font-semibold shadow transition-all duration-200 border-2 focus:outline-none focus:ring-2 focus:ring-emotional/50 whitespace-nowrap ${emotions.some(e => e.emoji === opt.emoji)
                     ? 'bg-pink-100 border-pink-400 text-emotional animate-pulse'
                     : 'bg-white/70 border-pink-100 text-gray-500 hover:bg-pink-50'}`}
                   whileTap={{ scale: 0.92 }}
@@ -263,12 +263,12 @@ const AddMemory: React.FC = () => {
           {/* Media Upload Panel */}
           <div className={`w-full flex flex-col items-center mb-4 sm:mb-6 animate-fade-in-slow`}>
             <div
-              className={`w-full rounded-xl sm:rounded-2xl border-2 border-dashed p-3 sm:p-6 bg-pink-50/40 flex flex-col items-center gap-2 transition-all duration-300 ${dragActive ? 'border-emotional bg-pink-100/60' : 'border-pink-200'}`}
+              className={`w-full rounded-xl sm:rounded-2xl border-2 border-dashed p-2 sm:p-6 bg-pink-50/40 flex flex-col items-center gap-2 transition-all duration-300 ${dragActive ? 'border-emotional bg-pink-100/60' : 'border-pink-200'}`}
               onDragOver={e => { e.preventDefault(); setDragActive(true); }}
               onDragLeave={e => { e.preventDefault(); setDragActive(false); }}
               onDrop={handleDrop}
             >
-              <div className="mb-2 text-emotional font-semibold text-sm sm:text-base">Upload Photos, Videos, or Audio</div>
+              <div className="mb-2 text-emotional font-semibold text-xs sm:text-base">Upload Photos, Videos, or Audio</div>
               <Button variant="outline" onClick={() => mediaInputRef.current?.click()} className="text-xs sm:text-base">Select Files</Button>
               <input ref={mediaInputRef} type="file" multiple className="hidden" onChange={handleMediaInput} />
               <div className="flex gap-2 mt-2 flex-wrap w-full overflow-x-auto">
@@ -281,7 +281,7 @@ const AddMemory: React.FC = () => {
                       <Button variant="outline" size="icon" disabled={carouselIdx === media.length - 1} onClick={() => setCarouselIdx(i => Math.min(media.length - 1, i + 1))}>&gt;</Button>
                     </div>
                     {/* Carousel preview */}
-                    <div className="relative w-36 h-36 sm:w-48 sm:h-48 flex items-center justify-center bg-white/80 rounded-xl shadow-inner">
+                    <div className="relative w-28 h-28 sm:w-48 sm:h-48 flex items-center justify-center bg-white/80 rounded-xl shadow-inner">
                       {media[carouselIdx].type === 'image' && <img src={media[carouselIdx].url} alt="" className="w-full h-full object-cover rounded-xl" />}
                       {media[carouselIdx].type === 'video' && <video src={media[carouselIdx].url} controls className="w-full h-full object-cover rounded-xl" />}
                       {media[carouselIdx].type === 'audio' && <audio src={media[carouselIdx].url} controls className="w-full" />}
@@ -317,7 +317,7 @@ const AddMemory: React.FC = () => {
                 const found = MOOD_MUSIC.find(m => m.value === e.target.value);
                 setMusic(found || MOOD_MUSIC[0]);
                 setMusicPlaying(!!e.target.value);
-              }} className="rounded-xl bg-white/80 px-2 py-1 text-xs sm:text-base">
+              }} className="rounded-xl bg-white/80 px-2 py-1 text-xs sm:text-base w-full sm:w-auto">
                 {MOOD_MUSIC.map(m => <option key={m.label} value={m.value}>{m.label}</option>)}
               </select>
               <Button variant={musicPlaying ? 'emotional' : 'outline'} size="icon" className="rounded-full" onClick={() => setMusicPlaying(p => !p)} disabled={!music.value}>
@@ -330,10 +330,10 @@ const AddMemory: React.FC = () => {
           </div>
           {/* Editor Controls */}
           <div className="w-full flex flex-col sm:flex-row flex-wrap gap-2 items-center justify-between mb-3 sm:mb-4 px-1 sm:px-4 pt-2 sm:pt-4">
-            <div className="flex gap-2 items-center">
+            <div className="flex gap-2 items-center overflow-x-auto scrollbar-thin w-full sm:w-auto">
               <span className="text-xs sm:text-sm text-muted-foreground">Font:</span>
               {FONT_OPTIONS.map(opt => (
-                <Button key={opt.label} variant={font.label === opt.label ? 'emotional' : 'outline'} size="sm" className="rounded-full px-2 sm:px-3 text-xs sm:text-sm" onClick={() => setFont(opt)}>{opt.label}</Button>
+                <Button key={opt.label} variant={font.label === opt.label ? 'emotional' : 'outline'} size="sm" className="rounded-full px-2 sm:px-3 text-xs sm:text-sm whitespace-nowrap" onClick={() => setFont(opt)}>{opt.label}</Button>
               ))}
             </div>
             <div className="flex gap-2 items-center">
@@ -341,10 +341,10 @@ const AddMemory: React.FC = () => {
               <input type="range" min={16} max={32} value={fontSize} onChange={e => setFontSize(Number(e.target.value))} className="w-16 sm:w-24" />
               <span className="text-xs sm:text-base font-semibold">{fontSize}px</span>
             </div>
-            <div className="flex gap-2 items-center">
+            <div className="flex gap-2 items-center overflow-x-auto scrollbar-thin w-full sm:w-auto">
               <span className="text-xs sm:text-sm text-muted-foreground">Mood:</span>
               {MOOD_COLORS.map(opt => (
-                <Button key={opt.label} variant={moodColor.label === opt.label ? 'emotional' : 'outline'} size="sm" className="rounded-full px-2 sm:px-3 text-xs sm:text-sm" onClick={() => setMoodColor(opt)}>{opt.label}</Button>
+                <Button key={opt.label} variant={moodColor.label === opt.label ? 'emotional' : 'outline'} size="sm" className="rounded-full px-2 sm:px-3 text-xs sm:text-sm whitespace-nowrap" onClick={() => setMoodColor(opt)}>{opt.label}</Button>
               ))}
             </div>
           </div>
@@ -354,14 +354,14 @@ const AddMemory: React.FC = () => {
             value={text}
             onChange={e => setText(e.target.value)}
             placeholder="Write your memory..."
-            className={`w-full min-h-[200px] sm:min-h-[300px] rounded-xl sm:rounded-2xl shadow-inner p-3 sm:p-6 outline-none resize-none transition-all duration-300 ${font.class} ${moodColor.value} ${moodColor.text} text-base sm:text-lg`}
+            className={`w-full min-h-[200px] sm:min-h-[300px] rounded-xl sm:rounded-2xl shadow-inner p-2 sm:p-6 outline-none resize-none transition-all duration-300 ${font.class} ${moodColor.value} ${moodColor.text} text-base sm:text-lg break-words min-w-0`}
             style={{ ...font.style, fontSize: fontSize, ...linedPaper }}
             spellCheck={true}
             autoFocus
           />
           {/* Save Button */}
           <div className="w-full flex justify-center mt-6 sm:mt-8 animate-fade-in-slow">
-            <Button variant="hero" className="rounded-xl text-base sm:text-lg py-2 sm:py-3 px-6 sm:px-8" onClick={handleSave}>
+            <Button variant="hero" className="rounded-xl text-base sm:text-lg py-2 sm:py-3 px-6 sm:px-8 w-full sm:w-auto" onClick={handleSave}>
               📖 Save to Capsule
             </Button>
           </div>

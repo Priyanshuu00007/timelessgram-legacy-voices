@@ -10,6 +10,7 @@ import NotFound from "./pages/NotFound";
 import CreateLegacy from "./pages/CreateLegacy";
 import LifeCapsule from "./pages/LifeCapsule";
 import AddMemory from "./pages/AddMemory";
+import Profile from "./pages/Profile";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +28,7 @@ const App = () => (
           <Route path="/life-capsule" element={<LifeCapsule />} />
           <Route path="/life-capsule/add" element={<AddMemory />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="/profile" element={<Profile />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

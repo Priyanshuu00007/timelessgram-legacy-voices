@@ -19,11 +19,50 @@ const DialogOverlay = React.forwardRef<
   <DialogPrimitive.Overlay
     ref={ref}
     className={cn(
-      "fixed inset-0 z-50 bg-black/80  data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
+      "fixed inset-0 z-50 bg-transparent data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
       className
     )}
     {...props}
-  />
+  >
+    {/* Animated aurora background */}
+    <div className="aurora-bg absolute inset-0 w-full h-full z-0 pointer-events-none" />
+    <style>{`
+      .aurora-bg {
+        background: linear-gradient(120deg, #ffe0e9 0%, #fbeee6 100%);
+        overflow: hidden;
+      }
+      .aurora-bg::before, .aurora-bg::after {
+        content: '';
+        position: absolute;
+        left: 0; top: 0; width: 100%; height: 100%;
+        pointer-events: none;
+        opacity: 0.7;
+        z-index: 1;
+      }
+      .aurora-bg::before {
+        background: radial-gradient(ellipse 80% 40% at 30% 40%, #e2557b 0%, transparent 80%),
+                    radial-gradient(ellipse 60% 30% at 70% 60%, #f7d9e3 0%, transparent 80%),
+                    radial-gradient(ellipse 50% 20% at 60% 30%, #ffe0e9 0%, transparent 80%);
+        animation: auroraMove1 18s ease-in-out infinite alternate;
+      }
+      .aurora-bg::after {
+        background: radial-gradient(ellipse 60% 30% at 60% 70%, #fbeee6 0%, transparent 80%),
+                    radial-gradient(ellipse 40% 20% at 40% 60%, #e2557b 0%, transparent 80%);
+        animation: auroraMove2 22s ease-in-out infinite alternate;
+        opacity: 0.5;
+      }
+      @keyframes auroraMove1 {
+        0% { transform: translateY(0) scaleX(1); }
+        50% { transform: translateY(-30px) scaleX(1.08); }
+        100% { transform: translateY(0) scaleX(1); }
+      }
+      @keyframes auroraMove2 {
+        0% { transform: translateY(0) scaleX(1); }
+        50% { transform: translateY(30px) scaleX(0.95); }
+        100% { transform: translateY(0) scaleX(1); }
+      }
+    `}</style>
+  </DialogPrimitive.Overlay>
 ))
 DialogOverlay.displayName = DialogPrimitive.Overlay.displayName
 

@@ -26,12 +26,22 @@ const ProgressBar = ({ step, total }: { step: number; total: number }) => (
 // Personal Info + Verification Step
 const PersonalInfoStep: React.FC<{ onNext: () => void }> = ({ onNext }) => {
   // For demo: local state for dynamic fields
+  const [username, setUsername] = React.useState('');
+  const [usernameError, setUsernameError] = React.useState('');
   const [emails, setEmails] = React.useState(['']);
   const [phones, setPhones] = React.useState(['']);
   const [whatsapps, setWhatsapps] = React.useState(['']);
   const [guardians, setGuardians] = React.useState([
     { name: '', phone: '', email: '', relationship: '' }
   ]);
+  const [password, setPassword] = React.useState('');
+  const [showPassword, setShowPassword] = React.useState(false);
+  const [emailOTP, setEmailOTP] = React.useState('');
+  const [phoneOTP, setPhoneOTP] = React.useState('');
+  const [emailOTPSent, setEmailOTPSent] = React.useState(false);
+  const [phoneOTPSent, setPhoneOTPSent] = React.useState(false);
+  const [emailVerified, setEmailVerified] = React.useState(false);
+  const [phoneVerified, setPhoneVerified] = React.useState(false);
 
   // Handlers for dynamic fields
   const addField = (arr: any[], setArr: any) => setArr([...arr, '']);
@@ -46,6 +56,21 @@ const PersonalInfoStep: React.FC<{ onNext: () => void }> = ({ onNext }) => {
     copy[idx][key] = value;
     setGuardians(copy);
   };
+
+  // Simulate uniqueness check (replace with real API call)
+  const checkUsernameUnique = () => {
+    if (username.trim().toLowerCase() === 'taken') {
+      setUsernameError('This username is already taken.');
+    } else {
+      setUsernameError('');
+    }
+  };
+
+  // Simulate OTP send/verify (replace with real API calls)
+  const sendEmailOTP = () => setEmailOTPSent(true);
+  const sendPhoneOTP = () => setPhoneOTPSent(true);
+  const verifyEmailOTP = () => setEmailVerified(emailOTP === '123456');
+  const verifyPhoneOTP = () => setPhoneVerified(phoneOTP === '123456');
 
   return (
     <motion.div
@@ -80,6 +105,56 @@ const PersonalInfoStep: React.FC<{ onNext: () => void }> = ({ onNext }) => {
           transition={{ delay: 0.5, duration: 0.7 }}
         >
           <div className="flex flex-col gap-4">
+            {/* Username */}
+            <div>
+              <Label htmlFor="username" className="text-emotional font-medium">Username <span className="text-xs text-muted-foreground">(unique, for login)</span></Label>
+              <div className="flex gap-2 items-center">
+                <Input id="username" placeholder="e.g. priya123" className="mt-1" value={username} onChange={e => setUsername(e.target.value)} onBlur={checkUsernameUnique} />
+                <Button variant="outline" type="button" onClick={checkUsernameUnique}>Check</Button>
+              </div>
+              {usernameError && <div className="text-xs text-destructive mt-1">{usernameError}</div>}
+            </div>
+            {/* Password */}
+            <div>
+              <Label htmlFor="password" className="text-emotional font-medium">Password</Label>
+              <div className="flex gap-2 items-center">
+                <Input id="password" type={showPassword ? 'text' : 'password'} placeholder="Create a password" className="mt-1" value={password} onChange={e => setPassword(e.target.value)} />
+                <Button variant="outline" type="button" onClick={() => setShowPassword(v => !v)}>{showPassword ? 'Hide' : 'Show'}</Button>
+              </div>
+              <div className="text-xs text-muted-foreground mt-1">Password will be required for login. If you forget it, you can log in via OTP to your primary email or phone.</div>
+            </div>
+            {/* Primary Email with OTP */}
+            <div>
+              <Label className="text-emotional font-medium">Primary Email</Label>
+              <div className="flex gap-2 items-center">
+                <Input placeholder="e.g. priya@email.com" className="mt-1" value={emails[0]} onChange={e => updateField(emails, setEmails, 0, e.target.value)} />
+                <Button variant="outline" type="button" disabled={emailVerified} onClick={sendEmailOTP}>{emailOTPSent ? (emailVerified ? 'Verified' : 'Resend OTP') : 'Send OTP'}</Button>
+              </div>
+              {emailOTPSent && !emailVerified && (
+                <div className="flex gap-2 items-center mt-2">
+                  <Input type="text" placeholder="Enter OTP" value={emailOTP} onChange={e => setEmailOTP(e.target.value)} className="w-32" maxLength={6} />
+                  <Button variant="outline" type="button" onClick={verifyEmailOTP}>Verify</Button>
+                  <span className="text-xs text-muted-foreground">(Try 123456)</span>
+                </div>
+              )}
+              {emailVerified && <div className="text-xs text-green-600 mt-1">Email verified!</div>}
+            </div>
+            {/* Primary Phone with OTP */}
+            <div>
+              <Label className="text-emotional font-medium">Primary Phone</Label>
+              <div className="flex gap-2 items-center">
+                <Input placeholder="e.g. +91 9876543210" className="mt-1" value={phones[0]} onChange={e => updateField(phones, setPhones, 0, e.target.value)} />
+                <Button variant="outline" type="button" disabled={phoneVerified} onClick={sendPhoneOTP}>{phoneOTPSent ? (phoneVerified ? 'Verified' : 'Resend OTP') : 'Send OTP'}</Button>
+              </div>
+              {phoneOTPSent && !phoneVerified && (
+                <div className="flex gap-2 items-center mt-2">
+                  <Input type="text" placeholder="Enter OTP" value={phoneOTP} onChange={e => setPhoneOTP(e.target.value)} className="w-32" maxLength={6} />
+                  <Button variant="outline" type="button" onClick={verifyPhoneOTP}>Verify</Button>
+                  <span className="text-xs text-muted-foreground">(Try 123456)</span>
+                </div>
+              )}
+              {phoneVerified && <div className="text-xs text-green-600 mt-1">Phone verified!</div>}
+            </div>
             <div>
               <Label htmlFor="name" className="text-emotional font-medium">Full Name</Label>
               <Input id="name" placeholder="e.g. Priya Sharma" className="mt-1" />

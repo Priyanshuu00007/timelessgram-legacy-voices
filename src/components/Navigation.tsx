@@ -24,13 +24,13 @@ export const Navigation = () => {
       <NavBar items={navItems} />
       
       {/* Header with Logo and CTA - below navigation */}
-      <div className="flex justify-between items-center px-4 sm:px-6 py-4 mt-16 mb-4">
+      <div className="flex items-center px-4 sm:px-6 py-4 mt-16 mb-4">
         <div className="flex items-center gap-2">
           <Heart className="w-5 h-5 sm:w-6 sm:h-6 text-emotional" />
           <span className="font-serif text-lg sm:text-xl font-bold text-foreground">Timelessgram</span>
         </div>
-        {/* Fix mobile button stacking */}
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full max-w-xs sm:max-w-none sm:w-auto ml-0 sm:ml-3">
+        {/* Button container: right-aligned, not stretched */}
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 max-w-xs w-auto ml-auto pr-2">
           <Dialog>
             <DialogTrigger asChild>
               <button className="bg-white border border-emotional text-emotional hover:bg-emotional hover:text-white px-4 sm:px-6 py-2 rounded-full font-medium transition-colors text-sm sm:text-base shadow-emotional focus:outline-none focus:ring-2 focus:ring-emotional/50 w-full sm:w-auto">

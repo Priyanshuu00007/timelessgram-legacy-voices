@@ -8,6 +8,8 @@ import Record from "./pages/Record";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 import CreateLegacy from "./pages/CreateLegacy";
+import LifeCapsule from "./pages/LifeCapsule";
+import AddMemory from "./pages/AddMemory";
 
 const queryClient = new QueryClient();
 
@@ -22,6 +24,8 @@ const App = () => (
           <Route path="/record" element={<Record />} />
           <Route path="/about" element={<About />} />
           <Route path="/create-legacy" element={<CreateLegacy />} />
+          <Route path="/life-capsule" element={<LifeCapsule />} />
+          <Route path="/life-capsule/add" element={<AddMemory />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

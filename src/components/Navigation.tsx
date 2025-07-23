@@ -1,11 +1,11 @@
 import { NavBar } from "@/components/ui/tubelight-navbar";
-import { Heart, Home, BookOpen, Info, Shield, User, MessageSquare } from "lucide-react";
+import { Heart, Home, BookOpen, Info, Shield, User, MessageSquare, Book } from "lucide-react";
 
 export const Navigation = () => {
   const navItems = [
     { name: 'Home', url: '/', icon: Home },
     { name: 'How It Works', url: '#how-it-works', icon: BookOpen },
-    { name: 'Stories', url: '#stories', icon: MessageSquare },
+    { name: 'Life Capsule', url: '/life-capsule', icon: Book },
     { name: 'About', url: '/about', icon: Info },
     { name: 'Security', url: '#security', icon: Shield },
   ];

@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-cassette.jpg";
-import { Heart, Play } from "lucide-react";
+import { Heart, Play, Book } from "lucide-react";
 
 export const HeroSection = () => {
   return (
@@ -27,10 +27,11 @@ export const HeroSection = () => {
                   Create Your Timelessgram
                 </a>
               </Button>
-              
-              <Button variant="outline" size="lg" className="text-lg border-accent bg-background/80 backdrop-blur">
-                <Play className="w-5 h-5" />
-                Watch Story
+              <Button variant="outline" size="lg" className="text-lg border-accent bg-background/80 backdrop-blur flex items-center gap-2" asChild>
+                <a href="/life-capsule">
+                  <Book className="w-5 h-5" />
+                  Life Capsule
+                </a>
               </Button>
             </div>
             

@@ -22,9 +22,9 @@ export const Navigation = () => {
     <>
       {/* Fixed Navigation Bar at top */}
       <NavBar items={navItems} />
-      
+
       {/* Header with Logo and CTA - below navigation */}
-      <div className="flex items-center px-4 sm:px-6 py-4 mt-16 mb-4">
+      <div className="flex items-center px-6 lg:px-8 py-6">
         <div className="flex items-center gap-2">
           <Heart className="w-5 h-5 sm:w-6 sm:h-6 text-emotional animate-logo-heart" />
           <span className="font-serif text-lg sm:text-xl font-bold text-foreground animate-logo-shimmer logo-gradient-bg" style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Timelessgram</span>
@@ -54,8 +54,8 @@ export const Navigation = () => {
         <div className="ml-auto pr-0">
           {/* Mobile layout: only Create Legacy button, no login icon */}
           <div className="flex flex-col items-end gap-2 sm:hidden w-full pr-0">
-            <a 
-              href="/create-legacy" 
+            <a
+              href="/create-legacy"
               className="bg-emotional hover:bg-emotional/90 text-white px-4 py-2 rounded-full font-medium transition-colors text-sm w-auto" style={{ marginRight: '0.5px' }}
             >
               Create Legacy
@@ -136,8 +136,8 @@ export const Navigation = () => {
                 `}</style>
               </DialogContent>
             </Dialog>
-            <a 
-              href="/create-legacy" 
+            <a
+              href="/create-legacy"
               className="bg-emotional hover:bg-emotional/90 text-white px-4 sm:px-6 py-2 rounded-full font-medium transition-colors text-sm sm:text-base w-auto"
             >
               Create Legacy

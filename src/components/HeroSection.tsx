@@ -1,6 +1,7 @@
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import heroImage from "@/assets/hero-cassette.jpg";
 import { Heart, Play, Book } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export const HeroSection = () => {
   return (
@@ -21,18 +22,14 @@ export const HeroSection = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Button variant="hero" size="lg" className="text-xl" asChild>
-                <a href="/record">
-                  <Heart className="w-5 h-5" />
-                  Create Your Timelessgram
-                </a>
-              </Button>
-              <Button variant="outline" size="lg" className="text-lg border-accent bg-background/80 backdrop-blur flex items-center gap-2" asChild>
-                <a href="/life-capsule">
-                  <Book className="w-5 h-5" />
-                  Life Capsule
-                </a>
-              </Button>
+              <Link to="/record" className={buttonVariants({ variant: "hero", size: "lg" }) + " text-xl flex items-center justify-center gap-2"}>
+                <Heart className="w-5 h-5" />
+                Create Your Timelessgram
+              </Link>
+              <Link to="/life-capsule" className={buttonVariants({ variant: "outline", size: "lg" }) + " text-lg border-accent bg-background/80 backdrop-blur flex items-center gap-2"}>
+                <Book className="w-5 h-5" />
+                Life Capsule
+              </Link>
             </div>
             
             <div className="mt-12 flex items-center gap-6 text-sm text-muted-foreground justify-center lg:justify-start">

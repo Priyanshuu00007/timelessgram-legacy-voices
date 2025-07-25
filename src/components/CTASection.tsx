@@ -1,5 +1,6 @@
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { Heart, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export const CTASection = () => {
   return (
@@ -21,17 +22,15 @@ export const CTASection = () => {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="hero" size="lg" className="bg-white text-emotional hover:bg-white/90 text-xl" asChild>
-              <a href="/create-legacy">
-                <Heart className="w-5 h-5" />
-                Create Legacy
-              </a>
-            </Button>
+            <Link to="/create-legacy" className={buttonVariants({ variant: "hero", size: "lg" }) + " bg-white text-emotional hover:bg-white/90 text-xl flex items-center justify-center gap-2"}>
+              <Heart className="w-5 h-5" />
+              Create Legacy
+            </Link>
 
-            <Button variant="outline" size="lg" className="border-white text-white hover:bg-white text-lg bg-white/10">
+            <Link to="/about" className={buttonVariants({ variant: "outline", size: "lg" }) + " border-white text-white hover:bg-white text-lg bg-white/10 flex items-center justify-center gap-2"}>
               Learn More
               <ArrowRight className="w-5 h-5" />
-            </Button>
+            </Link>
           </div>
 
           <p className="text-white/70 text-sm mt-8">
